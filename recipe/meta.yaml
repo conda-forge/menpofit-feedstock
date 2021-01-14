@@ -1,5 +1,5 @@
 {% set name = "menpofit" %}
-{% set version = "0.6.1" %}
+{% set version = "0.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f80b8bbe3f86299d42f36acecf33ef297e54b9c1ddfbe7b076c198c0fa756ea6
+  sha256: 8d0a10c19845e2703e52cfd16e4d14ab7d211e30437704ac4c714a27a76c96b7
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv"
-  skip: True  # [win or py<35]
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [win or py<35]
 
 requirements:
   host:
