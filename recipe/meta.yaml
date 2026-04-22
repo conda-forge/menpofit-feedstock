@@ -6,27 +6,29 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: dd853a941ced459a953978ee9914172279753e7ac75622145512dfafa88c5371
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
   noarch: python
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
 
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - dlib
     - menpo
     - pandas
     - scikit-learn
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - menpofit
     - menpofit.aam
